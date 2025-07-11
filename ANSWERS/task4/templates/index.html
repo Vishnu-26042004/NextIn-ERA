@@ -1,0 +1,36 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Predictor</title>
+</head>
+<body>
+    <h1>🏡 House Price Prediction</h1>
+    
+    <form method="POST">
+        <label for="location">Location:</label>
+        <select name="location" required>
+            {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <label for="size_sqft">Size (sq ft):</label>
+        <input type="number" name="size_sqft" required>
+        <br><br>
+
+        <label for="year_built">Year Built:</label>
+        <input type="number" name="year_built" required>
+        <br><br>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction %}
+        <h2>💰 Predicted Price: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
